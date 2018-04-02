@@ -213,16 +213,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _font: {fileID: 0}
   _text: 
-  _color:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
-  _color2:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  _color: {r: 1, g: 1, b: 1, a: 1}
+  _color2: {r: 1, g: 1, b: 1, a: 1}
   _useGradient: 0
   _textureGradient: 0
   _anchor: 6
@@ -238,16 +230,8 @@ MonoBehaviour:
     version: 1
     font: {fileID: 11400000, guid: cb3bf0ad5e92744d6856da9a7d5a3125, type: 2}
     text: 4c4f47494e
-    color:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    color2:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+    color2: {r: 1, g: 1, b: 1, a: 1}
     useGradient: 0
     textureGradient: 0
     anchor: 6
@@ -272,11 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collection: {fileID: 11400000, guid: d99abb00044ca4f508e7e94f55f6a425, type: 2}
-  _color:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  _color: {r: 1, g: 1, b: 1, a: 1}
   _scale: {x: 1, y: 1, z: 1}
   _spriteId: 9
   boxCollider2D: {fileID: 0}

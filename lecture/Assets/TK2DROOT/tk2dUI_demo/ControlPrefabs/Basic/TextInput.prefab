@@ -440,16 +440,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _font: {fileID: 11400000, guid: fb1b97eccf6db514999d1605baf017e5, type: 2}
   _text: 
-  _color:
-    r: 0.7372549
-    g: 1
-    b: 1
-    a: 1
-  _color2:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  _color: {r: 0.7372549, g: 1, b: 1, a: 1}
+  _color2: {r: 1, g: 1, b: 1, a: 1}
   _useGradient: 0
   _textureGradient: 0
   _anchor: 3
@@ -465,16 +457,8 @@ MonoBehaviour:
     version: 0
     font: {fileID: 0}
     text: 
-    color:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    color2:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+    color2: {r: 1, g: 1, b: 1, a: 1}
     useGradient: 0
     textureGradient: 0
     anchor: 6
@@ -500,16 +484,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _font: {fileID: 11400000, guid: fb1b97eccf6db514999d1605baf017e5, type: 2}
   _text: 7c
-  _color:
-    r: 0.7372549
-    g: 1
-    b: 1
-    a: 1
-  _color2:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  _color: {r: 0.7372549, g: 1, b: 1, a: 1}
+  _color2: {r: 1, g: 1, b: 1, a: 1}
   _useGradient: 0
   _textureGradient: 0
   _anchor: 3
@@ -525,16 +501,8 @@ MonoBehaviour:
     version: 0
     font: {fileID: 0}
     text: 
-    color:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    color2:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+    color2: {r: 1, g: 1, b: 1, a: 1}
     useGradient: 0
     textureGradient: 0
     anchor: 6
@@ -605,16 +573,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _font: {fileID: 11400000, guid: fb1b97eccf6db514999d1605baf017e5, type: 2}
   _text: 
-  _color:
-    r: 0.7372549
-    g: 1
-    b: 1
-    a: 0.7058824
-  _color2:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  _color: {r: 0.7372549, g: 1, b: 1, a: 0.7058824}
+  _color2: {r: 1, g: 1, b: 1, a: 1}
   _useGradient: 0
   _textureGradient: 0
   _anchor: 3
@@ -630,16 +590,8 @@ MonoBehaviour:
     version: 0
     font: {fileID: 0}
     text: 
-    color:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
-    color2:
-      r: 1
-      g: 1
-      b: 1
-      a: 1
+    color: {r: 1, g: 1, b: 1, a: 1}
+    color2: {r: 1, g: 1, b: 1, a: 1}
     useGradient: 0
     textureGradient: 0
     anchor: 6
@@ -664,11 +616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collection: {fileID: 11400000, guid: a7b2ba5d04adf144faffa96ff7497955, type: 2}
-  _color:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  _color: {r: 1, g: 1, b: 1, a: 1}
   _scale: {x: 1, y: 1, z: 1}
   _spriteId: 3
   boxCollider2D: {fileID: 0}
@@ -700,11 +648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collection: {fileID: 11400000, guid: a7b2ba5d04adf144faffa96ff7497955, type: 2}
-  _color:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  _color: {r: 1, g: 1, b: 1, a: 1}
   _scale: {x: 1, y: 1, z: 1}
   _spriteId: 4
   boxCollider2D: {fileID: 0}

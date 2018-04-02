@@ -200,11 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collection: {fileID: 11400000, guid: a7b2ba5d04adf144faffa96ff7497955, type: 2}
-  _color:
-    r: 0.011764706
-    g: 0.101960786
-    b: 0.09411765
-    a: 1
+  _color: {r: 0.011764706, g: 0.101960786, b: 0.09411765, a: 1}
   _scale: {x: 19.6, y: 2.1, z: 1}
   _spriteId: 19
   boxCollider2D: {fileID: 0}
@@ -227,11 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collection: {fileID: 11400000, guid: a7b2ba5d04adf144faffa96ff7497955, type: 2}
-  _color:
-    r: 0.18039216
-    g: 0.89411765
-    b: 0.9411765
-    a: 1
+  _color: {r: 0.18039216, g: 0.89411765, b: 0.9411765, a: 1}
   _scale: {x: 18.85, y: 1.4, z: 1}
   _spriteId: 19
   boxCollider2D: {fileID: 0}
