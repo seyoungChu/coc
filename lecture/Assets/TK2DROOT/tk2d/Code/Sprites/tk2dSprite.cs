@@ -104,7 +104,7 @@ public class tk2dSprite : tk2dBaseSprite
 		mesh.uv = sprite.uvs;
 		mesh.triangles = sprite.indices;
 		mesh.bounds = AdjustedMeshBounds( GetBounds(), renderLayer );
-		
+        mesh.RecalculateNormals();
 		UpdateMaterial();
 		CreateCollider();
 	}
