@@ -11,7 +11,7 @@ public static class Define
 
     public static readonly int LAYERMASK_GRID = 1 << LayerMask.NameToLayer("Grid");
 
-    public static readonly int LAYERMASK_ALL_PICKLAYER = LAYERMASK_UI | LAYERMASK_BUILDING; //모든레이어를 선택가능 - 테스트씬에서 사용
+    public static readonly int LAYERMASK_ALL_PICKLAYER = LAYERMASK_UI | LAYERMASK_BUILDING | LAYERMASK_GRID; //모든레이어를 선택가능 - 테스트씬에서 사용
 
     public static readonly int LAYERMASK_REPLAY_PICKLAYER = LAYERMASK_UI;//리플레이 피킹레이어 - 리플레이에서는 월드맵을 직접 찍을 일이 없다.
 

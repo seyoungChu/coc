@@ -86,10 +86,11 @@ public class InputManager : MonoBehaviour
             newTouchOrMousePosition = this.MainCamera.ScreenCamera.ScreenToWorldPoint(currentpos);
 
             newPoint = new Vector2(currentpos.x, Screen.height - currentpos.y);
+            RaycastHit2D raycasthitInfo = Physics2D.Raycast(newTouchOrMousePosition, Vector2.zero);
 
-            RaycastHit2D raycasthitInfo = Physics2D.Raycast(newTouchOrMousePosition, Vector2.zero, Mathf.Infinity);
             if (raycasthitInfo.collider != null)
             {
+                Debug.LogWarning("RayCastHit On :" + raycasthitInfo.collider.transform.name);
                 newRayHitPosition = raycasthitInfo.point;
                 newRayHitCollider = raycasthitInfo.collider;
                 newRayHitTransform = raycasthitInfo.transform;
@@ -98,6 +99,7 @@ public class InputManager : MonoBehaviour
             }
             else
             {
+                Debug.Log("RayCast Miss");
                 newRayHitCollider = null;
                 newRayHitLayer = -1;
                 newRayHitTransform = null;
@@ -133,10 +135,11 @@ public class InputManager : MonoBehaviour
                 currentRayHitCollider = newRayHitCollider;
                 currentRayHitLayer = newRayHitLayer;
                 currentRayHitTransform = newRayHitTransform;
-                this.currentTouchPhase = touchphase;
+
 
             }
-
+            this.currentTouchPhase = touchphase;
+            Debug.Log("Touch :" + this.currentTouchPhase.ToString());
         }
 
     }

@@ -92,16 +92,18 @@ public class GridManager : MonoBehaviour
                 gridObj.transform.rotation = Quaternion.identity;
                 gridObj.transform.SetParent(myTransform);
                 gridObj.layer = LayerMask.NameToLayer("Grid");
-                EdgeCollider2D _collider2D = gridObj.AddComponent<EdgeCollider2D>();
+
+                PolygonCollider2D _collider2D = gridObj.AddComponent<PolygonCollider2D>();
                 Vector2[] points = new Vector2[] {
-                    new Vector2(-halfGridCellWidth,0.0f),
                     new Vector2(0.0f,halfGridCellHeight),
-                    new Vector2(halfGridCellWidth,0.0f),
-                    new Vector2(0.0f,-halfGridCellHeight)
+                    new Vector2(0.0f,0.0f),
+                    new Vector2(0.0f,halfGridCellHeight),
+                    new Vector2(-halfGridCellWidth,0.0f),
+                    new Vector2(0.0f,-halfGridCellHeight),
+                    new Vector2(halfGridCellWidth,0.0f)
                 };
                 _collider2D.points = points;
                 _collider2D.isTrigger = true;
-
 
                 index++;
             }
