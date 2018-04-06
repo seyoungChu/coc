@@ -2,46 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridManager : MonoBehaviour
+public class GridManager : SingletonMonobehaviour<GridManager>
 {
-
-    public class Grid
-    {
-        public bool isObstacle = false;
-        public bool isPathObstacle = false;
-        public GameObject gridObject = null;
-        public Vector3 position;
-        public Building building;
-        public int column;
-        public int row;
-
-        public Grid(Vector3 pos)
-        {
-            this.position = pos;
-        }
-
-        public void SetColRow(int col, int row)
-        {
-            this.column = col;
-            this.row = row;
-        }
-
-        public void Release()
-        {
-            this.isObstacle = false;
-            this.isPathObstacle = false;
-            this.building = null;
-        }
-
-        public void MarkAsObstacle(Building building)
-        {
-            this.building = building;
-            this.isObstacle = true;
-        }
-
-    }
-
-
 
     public int numOfRows = 50, numOfColumns = 50;
 
@@ -129,4 +91,8 @@ public class GridManager : MonoBehaviour
 
     }
 
+
+
 }
+
+

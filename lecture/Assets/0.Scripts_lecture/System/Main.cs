@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Main : MonoBehaviour
+public class Main : SingletonMonobehaviour<Main>
 {
-
     GridManager gridManager;
     InputManager inputManager;
+    EntityManager entityManager;
 
-    // Use this for initialization
-    void Start()
+	// Use this for initialization
+	void Start()
     {
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 30;
+        Application.runInBackground = true;
+
+
         GameObject gridObject = new GameObject("GridManager");
         gridObject.transform.SetParent(transform);
         gridManager = gridObject.AddComponent<GridManager>();
@@ -19,6 +24,11 @@ public class Main : MonoBehaviour
         GameObject inputObject = new GameObject("InputManager");
         inputObject.transform.SetParent(transform);
         inputManager = inputObject.AddComponent<InputManager>();
+
+        GameObject entityObjct = new GameObject("EntityManager");
+        entityObjct.transform.SetParent(transform);
+        this.entityManager = entityObjct.AddComponent<EntityManager>();
+
 
     }
 
@@ -29,6 +39,8 @@ public class Main : MonoBehaviour
         this.inputManager.TouchUpdate();
 
         this.inputManager.UpdateGameInput();
+
+        this.entityManager.UpdateEntities();
 
     }
 }

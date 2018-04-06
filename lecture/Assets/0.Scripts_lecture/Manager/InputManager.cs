@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputManager : MonoBehaviour
+public class InputManager : SingletonMonobehaviour<InputManager>
 {
-
-
 
     /// <summary> RaycastCamera에서 Raycast를 할 Layer</summary>
     public static int rayHitLayer { get; set; }
@@ -13,6 +11,9 @@ public class InputManager : MonoBehaviour
     public static Dictionary<int, FingerInput> fingerInputDic = new Dictionary<int, FingerInput>();
     /// <summary> 시작점으로부터 다음의 길이보다 크게 드래그 되어야 실제 드래그로 인정한다. </summary>
     public float DRAG_THRESHOLD = 15.0f;
+
+    public Building SelectBuilding = null;
+    public Building DragBuilding = null;
 
     public class FingerInput
     {
@@ -90,7 +91,7 @@ public class InputManager : MonoBehaviour
 
             if (raycasthitInfo.collider != null)
             {
-                Debug.LogWarning("RayCastHit On :" + raycasthitInfo.collider.transform.name);
+                //Debug.LogWarning("RayCastHit On :" + raycasthitInfo.collider.transform.name);
                 newRayHitPosition = raycasthitInfo.point;
                 newRayHitCollider = raycasthitInfo.collider;
                 newRayHitTransform = raycasthitInfo.transform;
@@ -99,7 +100,7 @@ public class InputManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("RayCast Miss");
+                //Debug.Log("RayCast Miss");
                 newRayHitCollider = null;
                 newRayHitLayer = -1;
                 newRayHitTransform = null;
@@ -139,7 +140,7 @@ public class InputManager : MonoBehaviour
 
             }
             this.currentTouchPhase = touchphase;
-            Debug.Log("Touch :" + this.currentTouchPhase.ToString());
+            //Debug.Log("Touch :" + this.currentTouchPhase.ToString());
         }
 
     }
@@ -285,7 +286,22 @@ public class InputManager : MonoBehaviour
 
     void TouchBeginState(FingerInput input)
     {
+        if (input.currentRayHitLayer == Define.LAYERMASK_BUILDING)
+        {
+            this.SelectBuilding = input.currentRayHitTransform.GetComponent<Building>();
 
+            if (this.DragBuilding == null)
+            {
+                this.DragBuilding = this.SelectBuilding;
+                this.DragBuilding.isSelect = true;
+            }
+            else
+            {
+                this.DragBuilding.isSelect = false;
+                this.DragBuilding = this.SelectBuilding;
+                this.DragBuilding.isSelect = true;
+            }
+        }
     }
 
     void TouchPressingState(FingerInput input)
@@ -295,8 +311,40 @@ public class InputManager : MonoBehaviour
 
     void TouchEndState(FingerInput input)
     {
-
+        if(this.DragBuilding != null)
+        {
+            this.DragBuilding.isSelect = false;
+        }
+        if(this.SelectBuilding != null)
+        {
+            this.SelectBuilding = null;
+        }
     }
 
+
+    public Vector3 GetDragPoint()
+    {
+        if (fingerInputDic.Count <= 0)
+        {
+            return Define.EXCEPT_POSITON;
+        }
+
+        FingerInput current_input = GetCurrentInput();
+
+        return current_input.currentTouchOrMousePosition;
+    }
+
+    public FingerInput GetCurrentInput()
+    {
+        if (fingerInputDic.Count <= 0)
+        {
+            return null;
+        }
+
+        var enumerator = fingerInputDic.GetEnumerator();
+        enumerator.MoveNext();
+        FingerInput current_input = enumerator.Current.Value;
+        return current_input;
+    }
 
 }

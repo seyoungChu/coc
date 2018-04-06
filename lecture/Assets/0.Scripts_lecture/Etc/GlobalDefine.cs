@@ -18,5 +18,71 @@ public static class Define
     public static readonly int LAYERMASK_BATTLE_PICKLAYER = LAYERMASK_UI | LAYERMASK_BUILDING; //배틀전용 피킹레이어
 
     public static readonly int LAYERMASK_PICKLAYER = LAYERMASK_UI | LAYERMASK_BUILDING;//베이스맵 피킹 레이어
+
+    public static readonly Vector3 EXCEPT_POSITON = new Vector3(-10000.0f, -10000.0f, -10000.0f);
     
+}
+
+public class Grid
+{
+    public bool isObstacle = false;
+    public bool isPathObstacle = false;
+    public GameObject gridObject = null;
+    public Vector3 position;
+    public Building building;
+    public int column;
+    public int row;
+
+    public Grid(Vector3 pos)
+    {
+        this.position = pos;
+    }
+
+    public void SetColRow(int col, int row)
+    {
+        this.column = col;
+        this.row = row;
+    }
+
+    public void Release()
+    {
+        this.isObstacle = false;
+        this.isPathObstacle = false;
+        this.building = null;
+    }
+
+    public void MarkAsObstacle(Building building)
+    {
+        this.building = building;
+        this.isObstacle = true;
+    }
+
+}
+
+
+public enum EntityCategory : int
+{
+    None = -1,
+    WatchTower = 10000,
+    Creed = 20000,
+    Max
+}
+
+public enum EntityType : int
+{
+    None = -1,
+    Normal,
+    Unit,
+    Defense,
+    Resource,
+    Max
+}
+
+public class EntityData
+{
+    public EntityCategory entCategory;
+    public EntityType entType;
+    public int HP;
+    public int Level;
+
 }

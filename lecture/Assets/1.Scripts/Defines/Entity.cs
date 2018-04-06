@@ -6,11 +6,16 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour {
 
+
+    [HideInInspector]
+    public int UID;
+
+    [HideInInspector]
+    public EntityType entitytype; //엔티티종류 - 빌딩,유닛,이펙트
+
     [HideInInspector]
     public Transform myTransform; //트랜스폼 캐싱
 
-    [HideInInspector]
-    public Vector3 mySpritePos; //내 스프라이트 위치 - 타일좌표와 스프라이트 위치가 어긋나는 경우 이 위치로 미사일발사등이 이루어져야 한다. - 매 업데이트마다 갱신한다.
 
     [HideInInspector]
     public int level; //레벨
@@ -58,17 +63,6 @@ public class Entity : MonoBehaviour {
     [HideInInspector]
     public int hit_timing_bullet = 0;//bool : 0일경우 근접타격 애니메이션 출력시 타격 타이밍 제어. 1일 경우 투사체 충돌시에 타격 판정.
 
-    [HideInInspector]
-    public BuildingGroupType favoriteTargetType;
-
-    [HideInInspector]
-    public int UID;
-
-    [HideInInspector]
-    public EntityType entitytype; //엔티티종류 - 빌딩,유닛,이펙트
-
-    [HideInInspector]
-    public Vector2 cargoBoundary = new Vector2(128.0f, 96.0f);//new Vector2(150.0f, 112.5f);
 
     //[HideInInspector]
     //public EffectList attack_effect = EffectList.None;
@@ -87,6 +81,18 @@ public class Entity : MonoBehaviour {
     public GameObject TextMeshObject = null; //텍스트오브젝트
     #endregion
 
+    public virtual void InitEntity(EntityData data)
+    {
+        
+    }
+
+    /// <summary>
+    /// Cashings the object.
+    /// </summary>
+    public virtual void CashingObject()
+    {
+        
+    }
 
     /// <summary>
     /// 엔티티 업데이트

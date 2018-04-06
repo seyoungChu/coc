@@ -2581,15 +2581,6 @@ public enum BuildingStructState //빌딩 건설 스테이트
 }
 
 
-public enum EntityType //엔티티의 종류 
-{
-    Building = 0,
-    Unit,
-    Effect,
-    Environment, //환경물체들(안쓰는 건물포함 - 스페이스플랫폼,탐험대등)
-    SupportWeapon,//서포트웨폰 
-    End
-}
 
 //스폰타입
 public enum SpawnType
