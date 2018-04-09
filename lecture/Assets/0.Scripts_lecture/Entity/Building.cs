@@ -8,18 +8,44 @@ public class Building : Entity
 
     public EntityType myType = EntityType.None;
 
-    public bool isSelect = false;
-
+    public bool isSelect
+    {
+        set
+        {
+            if (_isSelect == false && value == true)
+            {
+                if (myCollider != null)
+                {
+                    myCollider.enabled = false;
+                }
+            }
+            if (_isSelect == true && value == false)
+            {
+                if (myCollider != null)
+                {
+                    myCollider.enabled = true;
+                }
+            }
+            _isSelect = value;
+        }
+        get
+        {
+            return _isSelect;
+        }
+    }
+    private bool _isSelect = false;
     public Vector3 originPos = Vector3.zero;
-    public Vector3 lastPos = Vector3.zero;
+    public Vector2 lastPos = Vector2.zero;
 
     private Vector3 dragStartPos = Vector3.zero;
     private Vector3 dragEndPos = Vector3.zero;
-    private List<Vector3> movePosList = new List<Vector3>();
+    private List<Vector2> movePosList = new List<Vector2>();
 
     private int myGridIndex = 0;
 
     private tk2dSprite mySprite;
+    private BoxCollider2D myCollider;
+
 
 
     public List<Grid> obstacle = new List<Grid>();
@@ -28,6 +54,11 @@ public class Building : Entity
     {
         myTransform = transform;
         mySprite = transform.Find("sprite").GetComponent<tk2dSprite>();
+        myCollider = gameObject.GetComponent<BoxCollider2D>();
+        if (myCollider == null)
+        {
+            myCollider = gameObject.AddComponent<BoxCollider2D>();
+        }
 
     }
 
@@ -58,7 +89,6 @@ public class Building : Entity
     void DragUpdate()
     {
         //BuildingManager에서 가상으로 그려둔 타일맵기반으로 움직인다. 
-
         lastPos = myTransform.localPosition;
 
         InputManager.FingerInput current_input = InputManager.Instance.GetCurrentInput();
@@ -66,7 +96,7 @@ public class Building : Entity
         {
             if (current_input.currentRayHitTransform.gameObject.layer == LayerMask.NameToLayer("Grid"))
             {
-                Vector3 currentHitTransformPosition = current_input.currentRayHitTransform.position;
+                Vector2 currentHitTransformPosition = current_input.currentRayHitTransform.position;
                 if (lastPos != currentHitTransformPosition)
                 {
                     if (movePosList.Contains(currentHitTransformPosition) == false)
@@ -83,7 +113,7 @@ public class Building : Entity
 
         if (movePosList.Count > 0)
         {
-            myTransform.localPosition = movePosList[0];
+            myTransform.localPosition = new Vector3(movePosList[0].x, movePosList[0].y, -1.0f);
             movePosList.RemoveAt(0);
         }
 

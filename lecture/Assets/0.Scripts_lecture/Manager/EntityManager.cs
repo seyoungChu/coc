@@ -20,22 +20,40 @@ public class EntityManager : SingletonMonobehaviour<EntityManager>
         }
     }
     //temp!
-    private void Start()
-    {
-        Building[] buildings = FindObjectsOfType<Building>();
-        if (buildings == null || buildings.Length == 0)
-        {
-            return;
-        }
+    //private void Start()
+    //{
+    //    Building[] buildings = FindObjectsOfType<Building>();
+    //    if (buildings == null || buildings.Length == 0)
+    //    {
+    //        return;
+    //    }
+    //    for (int i = 0; i < buildings.Length; i++)
+    //    {
+    //        if (entities.Contains(buildings[i]) == false)
+    //        {
+    //            buildings[i].CashingObject();
+    //            entities.Add(buildings[i]);
+    //        }
+    //    }
+    //}
 
-        for (int i = 0; i < buildings.Length; i++)
+
+    public void SpawnEntity(int ID)
+    {
+
+        EntityData spawnData = DataManager.Instance.GetEntityData(ID);
+        if (spawnData != null)
         {
-            if (entities.Contains(buildings[i]) == false)
+            Vector3 pos = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0.0f));//InputManager.Instance.GetCurrentInput().currentRayHitPosition;
+            pos.z = -1.0f;
+
+            GameObject spawnObj = Instantiate(Resources.Load(spawnData.Prefab), pos, Quaternion.identity) as GameObject;
+            Entity newEntity = spawnObj.GetComponent<Entity>();
+            newEntity.CashingObject();
+            if (this.entities.Contains(newEntity) == false)
             {
-                buildings[i].CashingObject();
-                entities.Add(buildings[i]);
+                entities.Add(newEntity);
             }
         }
-
     }
 }

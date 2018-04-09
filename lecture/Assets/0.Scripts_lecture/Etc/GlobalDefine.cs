@@ -59,6 +59,14 @@ public class Grid
 
 }
 
+public enum EntityList : int
+{
+    None = -1,
+    WatchTower = 100000,
+    Creed = 100001,
+    Max
+}
+
 
 public enum EntityCategory : int
 {
@@ -80,9 +88,21 @@ public enum EntityType : int
 
 public class EntityData
 {
+    public int ID;
     public EntityCategory entCategory;
     public EntityType entType;
     public int HP;
     public int Level;
+    public string Prefab;
+
+    public EntityData(int _id, string category, string eType, int hp, int level, string prefab)
+    {
+        this.ID = _id;
+        this.entCategory = (EntityCategory)System.Enum.Parse(typeof(EntityCategory), category);
+        this.entType = (EntityType)System.Enum.Parse(typeof(EntityType), eType);
+        this.HP = hp;
+        this.Level = level;
+        this.Prefab = prefab;
+    }
 
 }

@@ -7,6 +7,7 @@ public class Main : SingletonMonobehaviour<Main>
     GridManager gridManager;
     InputManager inputManager;
     EntityManager entityManager;
+    DataManager dataManager;
 
 	// Use this for initialization
 	void Start()
@@ -28,6 +29,10 @@ public class Main : SingletonMonobehaviour<Main>
         GameObject entityObjct = new GameObject("EntityManager");
         entityObjct.transform.SetParent(transform);
         this.entityManager = entityObjct.AddComponent<EntityManager>();
+
+        GameObject dataObject = new GameObject("DataManager");
+        dataObject.transform.SetParent(transform);
+        this.dataManager = dataObject.AddComponent<DataManager>();
 
 
     }

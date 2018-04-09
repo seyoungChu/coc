@@ -45,3 +45,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 4180448169
+    locked: 0
+  - name: Building
+    uniqueID: 2543934441
+    locked: 0
+  - name: Unit
+    uniqueID: 423745207
+    locked: 0
+  - name: Effect
+    uniqueID: 3816461397
+    locked: 0

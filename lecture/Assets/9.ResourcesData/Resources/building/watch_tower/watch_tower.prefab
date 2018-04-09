@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4148988975824696}
   - component: {fileID: 61212999510828434}
+  - component: {fileID: 114509459448694568}
   m_Layer: 9
   m_Name: watch_tower
   m_TagString: Untagged
@@ -52,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1581251930150360}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4635183719996604}
@@ -101,8 +102,8 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1751032855
+  m_SortingLayer: 2
   m_SortingOrder: 1
 --- !u!33 &33951653933218666
 MeshFilter:
@@ -160,3 +161,35 @@ MonoBehaviour:
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
   renderLayer: 1
+--- !u!114 &114509459448694568
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1581251930150360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3eb10ff884934264b40cd46c56ccec1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UID: 0
+  entitytype: 0
+  myTransform: {fileID: 0}
+  level: 0
+  maxHP: 0
+  moveSpeed: 0
+  moveType: 0
+  attackSpeed: 0
+  attackPower: 0
+  defencePower: 0
+  bulletSpeed: 0
+  hit_timing: 0
+  hit_timing_bullet: 0
+  fire_points: []
+  behit_point: {fileID: 0}
+  tobeHide_HPbar: 0
+  TextMeshObject: {fileID: 0}
+  category: 10000
+  myType: 2
+  originPos: {x: 0, y: 0, z: 0}
+  lastPos: {x: 0, y: 0}

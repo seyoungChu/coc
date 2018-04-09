@@ -147,19 +147,7 @@ public class InputManager : SingletonMonobehaviour<InputManager>
 
     public void TouchUpdate()
     {
-        //! 끝난 입력 삭제.
-        //if (fingerInputDic.Count > 0)
-        //{
-        //    foreach (KeyValuePair<int, FingerInput> kv in fingerInputDic)
-        //    {
-        //        if (kv.Value.currentTouchPhase == TouchPhase.Canceled ||
-        //           kv.Value.currentTouchPhase == TouchPhase.Ended)
-        //        {
-        //            fingerInputDic.Remove(kv.Key);
-        //        }
-        //    }
-        //}
-
+        
         FingerInput fingerinput;
 
 
@@ -261,6 +249,19 @@ public class InputManager : SingletonMonobehaviour<InputManager>
 
     public void UpdateGameInput()
     {
+        //phase 2 shortcut Key
+        if(Input.GetKeyDown(KeyCode.F1))
+        {
+            EntityManager.Instance.SpawnEntity((int)EntityList.WatchTower);
+        }
+        if(Input.GetKeyDown(KeyCode.F2))
+        {
+            EntityManager.Instance.SpawnEntity((int)EntityList.Creed);
+        }
+
+
+
+        //phase 1 touch control
         if (fingerInputDic.Count == 0)
         {
             return;
