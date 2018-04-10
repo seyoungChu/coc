@@ -68,6 +68,7 @@ public class Building : Entity
         this.myType = data.entType;
         this.level = data.Level;
         this.hp = data.HP;
+        this.searchRange = data.SearchRange;
 
         this.CreateBuildingControl();
     }

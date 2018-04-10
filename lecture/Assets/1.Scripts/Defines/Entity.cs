@@ -63,6 +63,8 @@ public class Entity : MonoBehaviour {
     [HideInInspector]
     public int hit_timing_bullet = 0;//bool : 0일경우 근접타격 애니메이션 출력시 타격 타이밍 제어. 1일 경우 투사체 충돌시에 타격 판정.
 
+    [HideInInspector]
+    public float searchRange = 0.0f;
 
     //[HideInInspector]
     //public EffectList attack_effect = EffectList.None;

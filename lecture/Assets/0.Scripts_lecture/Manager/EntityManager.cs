@@ -56,4 +56,34 @@ public class EntityManager : SingletonMonobehaviour<EntityManager>
             }
         }
     }
+
+    public Transform GetCloseEntity(Vector3 searchPoint, float range, EntityType wantedType)
+    {
+        if (this.entities == null || this.entities.Count == 0)
+        {
+            return null;
+        }
+
+        Transform entity = null;
+
+        for (int i = 0; i < this.entities.Count; i++)
+        {
+            if (this.entities[i] == null || this.entities[i].gameObject.activeSelf == false)
+            {
+                continue;
+            }
+
+            if (this.entities[i].entitytype == wantedType)
+            {
+                float dist = (this.entities[i].transform.position - searchPoint).magnitude;
+                if (dist <= range)
+                {
+                    range = dist;
+                    entity = this.entities[i].transform;
+                }
+            }
+        }
+
+        return entity;
+    }
 }

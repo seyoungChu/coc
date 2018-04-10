@@ -93,16 +93,75 @@ public class EntityData
     public EntityType entType;
     public int HP;
     public int Level;
+    public float SearchRange;
     public string Prefab;
 
-    public EntityData(int _id, string category, string eType, int hp, int level, string prefab)
+    public EntityData(int _id, string category, string eType, int hp, int level, float range,string prefab)
     {
         this.ID = _id;
         this.entCategory = (EntityCategory)System.Enum.Parse(typeof(EntityCategory), category);
         this.entType = (EntityType)System.Enum.Parse(typeof(EntityType), eType);
         this.HP = hp;
         this.Level = level;
+        this.SearchRange = range;
         this.Prefab = prefab;
     }
 
+}
+
+/// <summary>
+/// 상태머신 아이디
+/// </summary>
+public enum StateID : int
+{
+    NULLSTATEID = -1,
+
+    IDLE = 0,
+    WALK = 1,
+    ATTACK = 2,
+    SEARCH = 3,
+    DEATH = 4,
+    ROTATE = 5,
+    APPEAR = 6,
+    STUN = 7,
+    _MAX
+}
+
+
+/// <summary>
+/// 상태머신 트랜지션
+/// </summary>
+public enum Transition : int
+{
+    NullTransition = 0,
+
+    IdleToSearch,
+    IdleToRotate,
+    IdleToDie,
+
+    SearchToIdle,
+    SearchToWalk,
+    SearchToAttack,
+    SearchToRotate,
+    SearchToDie,
+
+    RotateToIdle,
+    RotateToSearch,
+    RotateToWalk,
+    RotateToAttack,
+
+    WalkToAttack,
+    WalkToSearch,
+    WalkToIdle,
+    WalkToDeath,
+    WalkToRotate,
+    WalkToDie,
+
+    AttackToDeath,
+    AttackToSearch,
+    AttackToIdle,
+    AttackToRotate,
+    AttackToDie,
+
+    _Max
 }

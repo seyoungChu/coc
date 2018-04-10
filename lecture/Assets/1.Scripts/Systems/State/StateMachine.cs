@@ -12,7 +12,7 @@ public abstract class FSMState
     protected StateID stateID;
     protected bool changeState = false;
     public StateID ID { get { return stateID; } }
-    public VirtualControl controller;
+    public BaseController controller;
 
     /// <summary>
     /// A_state -> B_state 로 갈때 일어나는 Transition을 추가한다.

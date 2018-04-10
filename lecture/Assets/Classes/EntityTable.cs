@@ -23,6 +23,8 @@ public class EntityTable : ScriptableObject
 		public int HP;
 		public int Level;
 		public string Prefab;
+		public float SearchRange;
+		public int AttackPower;
 	}
 }
 
