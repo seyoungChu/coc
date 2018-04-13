@@ -4,14 +4,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class tk2dAniController : MonoBehaviour {
+public class tk2dAniController : MonoBehaviour
+{
 
     [HideInInspector]
     public tk2dSpriteAnimator animator_main; //애니메이션을 재생할 애니메이터
 
-    protected Dictionary<AnimationType, Tk2dAniData> AnimationList; //애니메이션 컨트롤러를 쓰는 객체별로 자신에게 필요한 애니메이션을 담아둔다.
-
-    protected Dictionary<AnimationType, string[]> animationNameList; //애니메이션 클립 리스트.
+    public tk2dSprite sprite_main;
 
     protected string[] directionName; //방향 스트링 값 
 
@@ -19,34 +18,49 @@ public class tk2dAniController : MonoBehaviour {
     public int currDirection; //현재 방향
     [HideInInspector]
     public int currLevel = 1;
-    public AnimationType currAnimation; //현재 애니메이션
+
 
     protected Vector3 originScale = Vector3.zero; //초기 scale
     protected Vector3 flipScale = Vector3.zero; //좌우반전을 위한 scale(x스케일에 -1을 곱한다)
     //unit
-    public DirectionType directionType = DirectionType.End;
-    public DirectionType[] rotationTypeList = new DirectionType[0];
+    public Direction8Way direction8Type = Direction8Way.se;
+    //public DirectionType[] rotationTypeList = new DirectionType[0];
 
     //building
-    public Direction16WayType directionType16 = Direction16WayType.End;
-    public Direction16WayType[] rotationTypeList16 = new Direction16WayType[0];
+    public Direction16Way direction16Type = Direction16Way.se;
+    //public Direction16WayType[] rotationTypeList16 = new Direction16WayType[0];
     bool isSkip = false;
     public int sortLayer = 0; //레이어 
 
-    protected virtual void Awake()
-    {
-        animator_main = GetComponent<tk2dSpriteAnimator>();
-        flipScale = originScale = transform.localScale;
-        flipScale.x *= -1;
-    }
+    //protected virtual void Awake()
+    //{
+    //    animator_main = GetComponent<tk2dSpriteAnimator>();
+    //    flipScale = originScale = transform.localScale;
+    //    flipScale.x *= -1;
+    //}
 
-    public virtual void Init(BuildingGroupID id)
+    public virtual void Init(EntityCategory category)
     {
-
-    }
-
-    public virtual void Init(UnitType type)
-    {
+        Transform[] childs = transform.GetComponentsInChildren<Transform>();
+        for (int i = 0; i < childs.Length; i++)
+        {
+            if (childs[i].name == "sprite")
+            {
+                sprite_main = childs[i].GetComponent<tk2dSprite>();
+            }
+            else if (childs[i].name == "ani_sprite")
+            {
+                animator_main = childs[i].GetComponent<tk2dSpriteAnimator>();
+                if (animator_main == null)
+                {
+                    animator_main = childs[i].gameObject.AddComponent<tk2dSpriteAnimator>();
+                }
+            }
+        }
+        if (sprite_main == null && animator_main != null)
+        {
+            sprite_main = animator_main.GetComponent<tk2dSprite>();
+        }
 
     }
 
@@ -58,26 +72,6 @@ public class tk2dAniController : MonoBehaviour {
     public virtual void SetLayer(int layer)
     {
 
-    }
-
-    /// <summary>
-    /// 객체 레벨에 맞게 tk2d 애니메이션을 로드하기 위한 스트링값을 미리 세팅한다 
-    /// 건물,유닛등 특성에 따라 애니메이션에 방향이 없거나 애니메이션 동작이 추가,삭제 되어있으므로 그에 맞게 재정의해서 사용한다.
-    /// </summary>
-    /// <param name="lv">레벨</param>
-    public virtual void SetAnimationForLevel(int lv)
-    {
-        currLevel = lv;
-    }
-
-    /// <summary>
-    /// 현재 적용중인 애니메이션을 변경한다.
-    /// </summary>
-    /// <param name="type">애니메이션 종류</param>
-    public virtual void ChangeAnimation(AnimationType type)
-    {
-        animator_main.Library = AnimationList[type].animation;
-        currAnimation = type;
     }
 
     public virtual void UpdateAnimation()
@@ -99,18 +93,29 @@ public class tk2dAniController : MonoBehaviour {
     /// 방향 변경
     /// </summary>
     /// <param name="type">방향</param>
-    public virtual bool ChangeDirection(DirectionType type)
+    public virtual bool ChangeDirection(Direction8Way type)
     {
         if ((int)type < 0 || (int)type > 7)
         {
             Debug.LogError("ChangeDirection Error:" + type.ToString());
         }
+
         bool retValue = false;
-        if (this.directionType != type)
+        if (this.direction8Type != type)
         {
             retValue = true; //바꼈다.
         }
-        this.directionType = type;
+
+        this.direction8Type = type;
+        if (this.direction8Type == Direction8Way.nw || this.direction8Type == Direction8Way.sw
+            || this.direction8Type == Direction8Way.w)
+        {
+            this.sprite_main.FlipX = true;
+        }
+        else
+        {
+            this.sprite_main.FlipX = false;
+        }
         currDirection = (int)type;
         return retValue;
     }
@@ -119,18 +124,18 @@ public class tk2dAniController : MonoBehaviour {
     /// 16방향애니메이션 처리.
     /// </summary>
     /// <param name="type"></param>
-    public virtual bool ChangeDirection16Way(Direction16WayType type)
+    public virtual bool ChangeDirection16Way(Direction16Way type)
     {
         if ((int)type < 0 || (int)type > 15)
         {
             Debug.LogError("ChangeDirection Error:" + type.ToString());
         }
         bool retValue = false;
-        if (this.directionType16 != type)
+        if (this.direction16Type != type)
         {
             retValue = true; //바꼈다.
         }
-        this.directionType16 = type;
+        this.direction16Type = type;
         currDirection = (int)type;
         return retValue;
     }
@@ -138,16 +143,8 @@ public class tk2dAniController : MonoBehaviour {
     /// <summary>
     /// 애니메이션 재생 - [현재애니메이션타입][현재방향]으로 구성된 문자열을 가지고 tk2d 애니메이터에서 클립을 재생한다.
     /// </summary>
-    public virtual void PlayAnimation(bool bLoop = true)
+    public virtual void PlayAnimation(AnimationType animType, bool bLoop = true)
     {
-        if (animator_main == null)
-        {
-            Debug.Log(gameObject.name + "의 animator_main이 null입니다.");
-            return;
-        }
-        animator_main.Stop();
-        animator_main.Play(animationNameList[currAnimation][currDirection]);
-
         if (bLoop)
         {
             animator_main.CurrentClip.wrapMode = tk2dSpriteAnimationClip.WrapMode.Loop;

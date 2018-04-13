@@ -14,6 +14,9 @@ public class Entity : MonoBehaviour {
     public EntityType entitytype; //엔티티종류 - 빌딩,유닛,이펙트
 
     [HideInInspector]
+    public EntityCategory category = EntityCategory.None;
+
+    [HideInInspector]
     public Transform myTransform; //트랜스폼 캐싱
 
 
@@ -46,10 +49,10 @@ public class Entity : MonoBehaviour {
     public float moveType; //0 = 지상 이동, 1 = 공중 레이어1, 2 = 공중 레이어2(1보다 상위 레이어)
 
     [HideInInspector]
-    public float attackSpeed;
+    public float attackSpeed = 0.5f;
 
     [HideInInspector]
-    public int attackPower;
+    public int attackPower = 100;
 
     [HideInInspector]
     public int defencePower = 0;
@@ -65,6 +68,9 @@ public class Entity : MonoBehaviour {
 
     [HideInInspector]
     public float searchRange = 0.0f;
+
+    [HideInInspector]
+    public float firstAttackDelay = 0.1f;
 
     //[HideInInspector]
     //public EffectList attack_effect = EffectList.None;
@@ -123,6 +129,17 @@ public class Entity : MonoBehaviour {
     public virtual void OnDamaged(int damage)
     {
 
+    }
+
+    public bool IsDead()
+    {
+        if(this.HP > 0)
+        {
+            return false;
+        }else
+        {
+            return true;
+        }
     }
 
     /// <summary>

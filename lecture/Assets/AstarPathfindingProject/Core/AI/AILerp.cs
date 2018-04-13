@@ -111,7 +111,7 @@ public class AILerp : MonoBehaviour
     public GridNode gridNode { get; set; }
 
     [HideInInspector]
-    public VirtualControl unitcontroll; //이 ai를 쓰고 있는 유닛컨트롤
+    public BaseController unitcontroll; //이 ai를 쓰고 있는 유닛컨트롤
 
     public int move_type = 0;//0:지상 1:공중 2: 공중(레이어가 위이다.) - 0아니면 모두 공중취급한다. - 메타파일기준.
 
@@ -422,8 +422,8 @@ public class AILerp : MonoBehaviour
             p.Release(this);
             if (unitcontroll != null)
             {
-                unitcontroll.bIsRepath = true;
-                unitcontroll.SetTargetWithFavorite(BuildingGroupType.normal);
+                //unitcontroll.bIsRepath = true;
+                unitcontroll.TargetFindandPathSearch(EntityType.Defense);
             }
 
             return;

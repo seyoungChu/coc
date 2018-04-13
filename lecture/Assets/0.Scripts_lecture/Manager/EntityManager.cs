@@ -50,10 +50,12 @@ public class EntityManager : SingletonMonobehaviour<EntityManager>
             GameObject spawnObj = Instantiate(Resources.Load(spawnData.Prefab), pos, Quaternion.identity) as GameObject;
             Entity newEntity = spawnObj.GetComponent<Entity>();
             newEntity.CashingObject();
+            newEntity.InitEntity(spawnData);
             if (this.entities.Contains(newEntity) == false)
             {
                 entities.Add(newEntity);
             }
+
         }
     }
 

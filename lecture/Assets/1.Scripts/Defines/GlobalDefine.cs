@@ -2845,20 +2845,7 @@ public enum Tk2dAnimationType
 }
 
 
-//애니메이션 종류
-public enum AnimationType
-{
-    None = -1,
-    Idle,
-    Idle_bottom,
-    Idle_head,
-    Walk,
-    Attack,
-    Operation,
-    Resource,
 
-    Max
-}
 
 //유저 의 초기 데이터 정보 종류 
 //기본적으로는 서버로부터 시작정보를 받아서 사용하지만 오프라인모드에서는 이정보를 직접 대입해서 사용한다.

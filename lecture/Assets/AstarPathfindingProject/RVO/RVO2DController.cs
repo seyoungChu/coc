@@ -233,196 +233,196 @@ public class RVO2DController : MonoBehaviour
     }
 
     #region 유닛회전
-    AILerp ailerp = null;
+    //AILerp ailerp = null;
 
-    tk2dAniController anicontroller;
+    //tk2dAniController anicontroller;
 
-    Vector3 originScale, flipScale;
-    public DirectionType direction; //방향값 - 8방향기본
+    //Vector3 originScale, flipScale;
+    //public DirectionType direction; //방향값 - 8방향기본
 
-    public void UpdateAnimation()
-    {
-        if (ailerp == null)
-        {
-            ailerp = GetComponent<AILerp>();
-            anicontroller = GetComponent<tk2dAniController>();
+    //public void UpdateAnimation()
+    //{
+    //    if (ailerp == null)
+    //    {
+    //        ailerp = GetComponent<AILerp>();
+    //        anicontroller = GetComponent<tk2dAniController>();
 
-            if (this.anicontroller == null)
-            {
-                this.anicontroller = gameObject.AddComponent<AniControllerNormalUnit>();
-              //  this.anicontroller.Init(UnitType.GoldBane);
+    //        if (this.anicontroller == null)
+    //        {
+    //            this.anicontroller = gameObject.AddComponent<AniControllerNormalUnit>();
+    //          //  this.anicontroller.Init(UnitType.GoldBane);
 
-                this.originScale = transform.localScale;
-                this.flipScale = this.originScale;
+    //            this.originScale = transform.localScale;
+    //            this.flipScale = this.originScale;
 
-                this.flipScale.x *= -1;
-            }
+    //            this.flipScale.x *= -1;
+    //        }
 
-           // this.anicontroller.SetAnimationForLevel(1, UnitType.GoldBane);
-        }
+    //       // this.anicontroller.SetAnimationForLevel(1, UnitType.GoldBane);
+    //    }
 
-        Vector3 direction = ailerp.AIdirection;
+    //    Vector3 direction = ailerp.AIdirection;
 
-        ChangeDirection(direction);
+    //    ChangeDirection(direction);
 
-        anicontroller.UpdateAnimation();
-    }
+    //    anicontroller.UpdateAnimation();
+    //}
 
 
-    /// <summary>
-    /// 방향테스트
-    /// </summary>
-    /// <param name="dir">기준이 되는 방향</param>
-    public void ChangeDirection(Vector3 dir)
-    {
-        transform.localScale = this.originScale;
+    ///// <summary>
+    ///// 방향테스트
+    ///// </summary>
+    ///// <param name="dir">기준이 되는 방향</param>
+    //public void ChangeDirection(Vector3 dir)
+    //{
+    //    transform.localScale = this.originScale;
 
-        if (Mathf.Abs(dir.x) > 0.2f)//high X speed
-        {
-            if (Mathf.Abs(dir.y) > 0.2f) //high y speed
-            {
-                if (dir.x > 0)
-                {
-                    if (dir.y > 0)
-                    {
-                        this.direction = DirectionType.NE;
-                    }
-                    else
-                    {
-                        this.direction = DirectionType.SE;
-                    }
-                }
+    //    if (Mathf.Abs(dir.x) > 0.2f)//high X speed
+    //    {
+    //        if (Mathf.Abs(dir.y) > 0.2f) //high y speed
+    //        {
+    //            if (dir.x > 0)
+    //            {
+    //                if (dir.y > 0)
+    //                {
+    //                    this.direction = DirectionType.NE;
+    //                }
+    //                else
+    //                {
+    //                    this.direction = DirectionType.SE;
+    //                }
+    //            }
 
-                else //if(dir.x<0)
-                {
-                    if (dir.y > 0)
-                    {
-                        this.direction = DirectionType.NW;
-                    }
-                    else
-                    {
-                        this.direction = DirectionType.SW;
-                    }
+    //            else //if(dir.x<0)
+    //            {
+    //                if (dir.y > 0)
+    //                {
+    //                    this.direction = DirectionType.NW;
+    //                }
+    //                else
+    //                {
+    //                    this.direction = DirectionType.SW;
+    //                }
 
-                    transform.localScale = this.flipScale;
-                }
-            }
-            else //low y speed
-            {
-                if (dir.x > 0)
-                {
-                    this.direction = DirectionType.E;
-                }
+    //                transform.localScale = this.flipScale;
+    //            }
+    //        }
+    //        else //low y speed
+    //        {
+    //            if (dir.x > 0)
+    //            {
+    //                this.direction = DirectionType.E;
+    //            }
 
-                else
-                {
-                    this.direction = DirectionType.W;
-                    transform.localScale = this.flipScale;
-                }
+    //            else
+    //            {
+    //                this.direction = DirectionType.W;
+    //                transform.localScale = this.flipScale;
+    //            }
 
-            }
+    //        }
 
-        }
-        else //if(Mathf.Abs(dir.x<-0.2f))// low x speed 
-        {
-            if (Mathf.Abs(dir.y) > 0.2f) //high y speed
-            {
-                if (dir.y > 0)
-                {
-                    this.direction = DirectionType.N;
-                }
-                else
-                {
-                    this.direction = DirectionType.S;
-                }
+    //    }
+    //    else //if(Mathf.Abs(dir.x<-0.2f))// low x speed 
+    //    {
+    //        if (Mathf.Abs(dir.y) > 0.2f) //high y speed
+    //        {
+    //            if (dir.y > 0)
+    //            {
+    //                this.direction = DirectionType.N;
+    //            }
+    //            else
+    //            {
+    //                this.direction = DirectionType.S;
+    //            }
 
-            }
-            else //low y speed
-            {
-                if (dir.x > 0)
-                {
-                    if (dir.y > 0)
-                    {
-                        this.direction = DirectionType.NE;
-                    }
-                    else
-                    {
-                        this.direction = DirectionType.SE;
-                    }
+    //        }
+    //        else //low y speed
+    //        {
+    //            if (dir.x > 0)
+    //            {
+    //                if (dir.y > 0)
+    //                {
+    //                    this.direction = DirectionType.NE;
+    //                }
+    //                else
+    //                {
+    //                    this.direction = DirectionType.SE;
+    //                }
 
-                }
+    //            }
 
-                else //if(dir.x<0)
-                {
-                    if (dir.y > 0)
-                    {
-                        this.direction = DirectionType.NW;
-                    }
-                    else
-                    {
-                        this.direction = DirectionType.SW;
-                    }
+    //            else //if(dir.x<0)
+    //            {
+    //                if (dir.y > 0)
+    //                {
+    //                    this.direction = DirectionType.NW;
+    //                }
+    //                else
+    //                {
+    //                    this.direction = DirectionType.SW;
+    //                }
 
-                    transform.localScale = this.flipScale;
-                }
-            }
-        }
+    //                transform.localScale = this.flipScale;
+    //            }
+    //        }
+    //    }
 
-        anicontroller.ChangeDirection(this.direction);
-        anicontroller.PlayAnimation();
-    }
+    //    anicontroller.ChangeDirection(this.direction);
+    //    anicontroller.PlayAnimation();
+    //}
     #endregion
 
-    public void Update()
-    {
-        if (rvoAgent == null) return;
+//    public void Update()
+//    {
+//        if (rvoAgent == null) return;
 
-        UpdateAnimation(); //유닛회전코드
+//        UpdateAnimation(); //유닛회전코드
 
-        if (lastPosition != tr.position)
-        {
-            Teleport(tr.position);
-        }
+//        if (lastPosition != tr.position)
+//        {
+//            Teleport(tr.position);
+//        }
 
-        if (lockWhenNotMoving)
-        {
-            locked = desiredVelocity == Vector3.zero;
-        }
+//        if (lockWhenNotMoving)
+//        {
+//            locked = desiredVelocity == Vector3.zero;
+//        }
 
-        UpdateAgentProperties();
+//        UpdateAgentProperties();
 
 
-        //The non-interpolated position
-        Vector3 force = Vector3.zero;
+//        //The non-interpolated position
+//        Vector3 force = Vector3.zero;
 
-        if (wallAvoidFalloff > 0 && wallAvoidForce > 0)
-        {
-            List<ObstacleVertex> obst = rvoAgent.NeighbourObstacles;
+//        if (wallAvoidFalloff > 0 && wallAvoidForce > 0)
+//        {
+//            List<ObstacleVertex> obst = rvoAgent.NeighbourObstacles;
 
-            if (obst != null) for (int i = 0; i < obst.Count; i++)
-                {
-                    Vector3 a = obst[i].position;
-                    Vector3 b = obst[i].next.position;
+//            if (obst != null) for (int i = 0; i < obst.Count; i++)
+//                {
+//                    Vector3 a = obst[i].position;
+//                    Vector3 b = obst[i].next.position;
 
-                    Vector3 closest = position - VectorMath.ClosestPointOnSegment(a, b, position);
+//                    Vector3 closest = position - VectorMath.ClosestPointOnSegment(a, b, position);
 
-                    if (closest == a || closest == b) continue;
+//                    if (closest == a || closest == b) continue;
 
-                    float dist = closest.sqrMagnitude;
-                    closest /= dist * wallAvoidFalloff;
-                    force += closest;
-                }
-        }
+//                    float dist = closest.sqrMagnitude;
+//                    closest /= dist * wallAvoidFalloff;
+//                    force += closest;
+//                }
+//        }
 
-#if ASTARDEBUG
-			Debug.DrawRay(position, desiredVelocity + force*wallAvoidForce);
-#endif
-        rvoAgent.DesiredVelocity = desiredVelocity + force * wallAvoidForce;
+//#if ASTARDEBUG
+//			Debug.DrawRay(position, desiredVelocity + force*wallAvoidForce);
+//#endif
+    //    rvoAgent.DesiredVelocity = desiredVelocity + force * wallAvoidForce;
 
-        tr.position = new Vector3(rvoAgent.InterpolatedPosition.x, rvoAgent.InterpolatedPosition.y, 0.0f) + Vector3.forward * height * 0.5f - center;
-        lastPosition = tr.position;
+    //    tr.position = new Vector3(rvoAgent.InterpolatedPosition.x, rvoAgent.InterpolatedPosition.y, 0.0f) + Vector3.forward * height * 0.5f - center;
+    //    lastPosition = tr.position;
 
-    }
+    //}
 
     private static readonly Color GizmoColor = new Color(240 / 255f, 213 / 255f, 30 / 255f);
 

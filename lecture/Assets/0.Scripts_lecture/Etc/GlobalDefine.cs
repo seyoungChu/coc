@@ -20,7 +20,13 @@ public static class Define
     public static readonly int LAYERMASK_PICKLAYER = LAYERMASK_UI | LAYERMASK_BUILDING;//베이스맵 피킹 레이어
 
     public static readonly Vector3 EXCEPT_POSITON = new Vector3(-10000.0f, -10000.0f, -10000.0f);
-    
+
+    public static float GridWidth = 128.0f;
+    public static float GridWidthHalf = 64.0f;
+    public static float GridHeight = 96.0f;
+    public static float GridHeightHalf = 48.0f;
+    public static float GridDiagonal = 80.0f;
+
 }
 
 public class Grid
@@ -93,16 +99,19 @@ public class EntityData
     public EntityType entType;
     public int HP;
     public int Level;
+    public int AttackPower;
     public float SearchRange;
     public string Prefab;
 
-    public EntityData(int _id, string category, string eType, int hp, int level, float range,string prefab)
+
+    public EntityData(int _id, string category, string eType, int hp, int level, int power,float range, string prefab)
     {
         this.ID = _id;
         this.entCategory = (EntityCategory)System.Enum.Parse(typeof(EntityCategory), category);
         this.entType = (EntityType)System.Enum.Parse(typeof(EntityType), eType);
         this.HP = hp;
         this.Level = level;
+        this.AttackPower = power;
         this.SearchRange = range;
         this.Prefab = prefab;
     }
@@ -164,4 +173,55 @@ public enum Transition : int
     AttackToDie,
 
     _Max
+}
+
+//애니메이션 종류
+public enum AnimationType
+{
+    None = -1,
+    Idle,
+    Idle_bottom,
+    Idle_head,
+    Walk,
+    Attack,
+    Operation,
+    Resource,
+
+    Max
+}
+
+public enum Direction8Way : int
+{
+    n = 0,
+    ne = 1,
+    e = 2,
+    se = 3,
+    s = 4,
+    sw = 5,
+    w = 6,
+    nw = 7,
+}
+
+/// <summary>
+/// 16방향 표시 - 북쪽방향부터 시계방향으로 돌아간다. 
+/// </summary>
+public enum Direction16Way : int
+{
+    n = 0,
+    nne = 1,
+    ne = 2,
+    nee = 3,
+    e = 4,
+    see = 5,
+    se = 6,
+    sse = 7,
+    s = 8,
+    ssw = 9,
+    sw = 10,
+    sww = 11,
+    w = 12,
+    nww = 13,
+    nw = 14,
+    nnw = 15,
+
 }

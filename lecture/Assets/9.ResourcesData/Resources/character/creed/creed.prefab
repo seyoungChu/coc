@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4535779428259140}
   - component: {fileID: 61291372571096298}
   - component: {fileID: 114799521016714062}
+  - component: {fileID: 114770519858199686}
+  - component: {fileID: 114190523417459878}
   m_Layer: 8
   m_Name: creed
   m_TagString: unit
@@ -40,9 +42,8 @@ GameObject:
   - component: {fileID: 23399139858912564}
   - component: {fileID: 114093738947371054}
   - component: {fileID: 114421383536617792}
-  - component: {fileID: 114797656410006628}
   m_Layer: 0
-  m_Name: sprite
+  m_Name: ani_sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1388983699733624}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -351, y: -82, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4926934281552360}
@@ -163,6 +164,30 @@ MonoBehaviour:
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}
   renderLayer: 7
+--- !u!114 &114190523417459878
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1388983699733624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 847a14d4dc9cc43679ab34fc78e0182f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  repathRate: Infinity
+  target: {fileID: 0}
+  canSearch: 1
+  canMove: 1
+  speed: 200
+  enableRotation: 0
+  rotationIn2D: 0
+  rotationSpeed: 10
+  interpolatePathSwitches: 1
+  switchPathInterpolationSpeed: 5
+  unitcontroll: {fileID: 0}
+  move_type: 0
+  AIdirection: {x: 0, y: 0, z: 1}
 --- !u!114 &114421383536617792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -177,18 +202,33 @@ MonoBehaviour:
   library: {fileID: 114817059317510096, guid: db6244250720d45daa048f285fa12e53, type: 2}
   defaultClipId: 0
   playAutomatically: 1
---- !u!114 &114797656410006628
+--- !u!114 &114770519858199686
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1940120515930344}
+  m_GameObject: {fileID: 1388983699733624}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb6b562b5888b479080f720988c3fa9b, type: 3}
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 114421383536617792}
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 4
+    exactEndPoint: 1
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: 1
+  traversableTagsCompatibility:
+    tagsChange: -1
+    tagsSet: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!114 &114799521016714062
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -202,6 +242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UID: 0
   entitytype: 0
+  category: -1
   myTransform: {fileID: 0}
   level: 0
   maxHP: 0
@@ -213,6 +254,8 @@ MonoBehaviour:
   bulletSpeed: 0
   hit_timing: 0
   hit_timing_bullet: 0
+  searchRange: 0
+  firstAttackDelay: 0.1
   fire_points: []
   behit_point: {fileID: 0}
   tobeHide_HPbar: 0

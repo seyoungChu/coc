@@ -17,7 +17,7 @@ public class DataManager : SingletonMonobehaviour<DataManager>
             foreach (EntityTable.Param p in s.list)
             {
                 Debug.LogWarning(i + " /  " + p.ID + " / " + p.EntityCategory.ToString() + " / " + p.EntityType.ToString() + "/" + p.Prefab);
-                entityData.Add(p.ID, new EntityData(p.ID, p.EntityCategory, p.EntityType, p.HP, p.Level,p.SearchRange, p.Prefab));
+                entityData.Add(p.ID, new EntityData(p.ID, p.EntityCategory, p.EntityType, p.HP, p.Level, p.AttackPower, p.SearchRange, p.Prefab));
                 i++;
             }
         }

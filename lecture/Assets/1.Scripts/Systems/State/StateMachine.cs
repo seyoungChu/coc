@@ -13,6 +13,7 @@ public abstract class FSMState
     protected bool changeState = false;
     public StateID ID { get { return stateID; } }
     public BaseController controller;
+    public bool isSearchCompleted = false;
 
     /// <summary>
     /// A_state -> B_state 로 갈때 일어나는 Transition을 추가한다.
@@ -96,11 +97,6 @@ public abstract class FSMState
     public virtual void DoBeforeEntering() { }
 
     /// <summary>
-    /// 상태가 끝나기 전에 처리.
-    /// </summary>
-    public virtual void DoBeforeLeaving() { }
-
-    /// <summary>
     /// 상태 조건 체크.
     /// </summary>
     public abstract void DoCheck();
@@ -109,6 +105,14 @@ public abstract class FSMState
     /// 이번 상태에서 처리할 행동.
     /// </summary>
     public abstract void DoAct();
+
+
+    /// <summary>
+    /// 상태가 끝나기 전에 처리.
+    /// </summary>
+    public virtual void DoBeforeLeaving() { }
+
+
 
 } // class FSMState
 

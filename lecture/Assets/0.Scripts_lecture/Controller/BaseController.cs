@@ -17,7 +17,6 @@ public class BaseController : MonoBehaviour
             }
             return fsm.CurrentStateID;
         }
-
     }
 
     public Entity OwnerEntity = null;
@@ -65,7 +64,7 @@ public class BaseController : MonoBehaviour
 
     }
 
-    public virtual Entity SetTargetWithFavorite(EntityType type)
+    public virtual Entity TargetFindandPathSearch(EntityType type)
     {
         return null;
     }
