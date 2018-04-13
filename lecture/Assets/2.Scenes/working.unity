@@ -180,80 +180,9 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2b8cd12c06e51744a9e13cb1dc60e947, type: 2}
-    - target: {fileID: 1000013574590424, guid: f47bfa6513db02a4b82551b506808301, type: 2}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000010052111894, guid: f47bfa6513db02a4b82551b506808301, type: 2}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000011287654478, guid: f47bfa6513db02a4b82551b506808301, type: 2}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000011228735686, guid: f47bfa6513db02a4b82551b506808301, type: 2}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000011523909154, guid: f47bfa6513db02a4b82551b506808301, type: 2}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000014095623562, guid: f47bfa6513db02a4b82551b506808301, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 23000013921371734, guid: f47bfa6513db02a4b82551b506808301,
-        type: 2}
-      propertyPath: m_LightProbeUsage
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 23000013921371734, guid: f47bfa6513db02a4b82551b506808301,
-        type: 2}
-      propertyPath: m_ReflectionProbeUsage
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 23000013921371734, guid: f47bfa6513db02a4b82551b506808301,
-        type: 2}
-      propertyPath: m_ReceiveShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 23000013921371734, guid: f47bfa6513db02a4b82551b506808301,
-        type: 2}
-      propertyPath: m_MotionVectors
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000014095623562, guid: f47bfa6513db02a4b82551b506808301, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f47bfa6513db02a4b82551b506808301, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1493237772 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1000014095623562, guid: f47bfa6513db02a4b82551b506808301,
-    type: 2}
-  m_PrefabInternal: {fileID: 1466655296}
---- !u!23 &1493237774 stripped
-MeshRenderer:
-  m_PrefabParentObject: {fileID: 23000013921371734, guid: f47bfa6513db02a4b82551b506808301,
-    type: 2}
-  m_PrefabInternal: {fileID: 1466655296}
---- !u!114 &1493237776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1493237772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82dc6b1d56c6a46a2b4ec4823e2b6b48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layerName: Background
-  setRenderer: {fileID: 1493237774}
 --- !u!1 &1626619038
 GameObject:
   m_ObjectHideFlags: 0

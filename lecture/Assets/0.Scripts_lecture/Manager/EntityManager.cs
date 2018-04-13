@@ -70,7 +70,7 @@ public class EntityManager : SingletonMonobehaviour<EntityManager>
 
         for (int i = 0; i < this.entities.Count; i++)
         {
-            if (this.entities[i] == null || this.entities[i].gameObject.activeSelf == false)
+            if (this.entities[i] == null || this.entities[i].IsDead() == true)
             {
                 continue;
             }
