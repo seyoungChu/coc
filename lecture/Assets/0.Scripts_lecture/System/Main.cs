@@ -9,6 +9,7 @@ public class Main : SingletonMonobehaviour<Main>
     EntityManager entityManager;
     DataManager dataManager;
     TimeManager timeManager;
+    CameraManager cameraManager;
 
 	// Use this for initialization
 	void Start()
@@ -18,31 +19,18 @@ public class Main : SingletonMonobehaviour<Main>
         Application.runInBackground = true;
 
 
-        //GameObject gridObject = new GameObject("GridManager");
-        //gridObject.transform.SetParent(transform);
-        //gridManager = gridObject.AddComponent<GridManager>();
         this.gridManager = (GridManager)AddManager<GridManager>();
         this.gridManager.Init();
 
-        //GameObject inputObject = new GameObject("InputManager");
-        //inputObject.transform.SetParent(transform);
-        //inputManager = inputObject.AddComponent<InputManager>();
         this.inputManager = (InputManager)AddManager<InputManager>();
 
-        //GameObject entityObjct = new GameObject("EntityManager");
-        //entityObjct.transform.SetParent(transform);
-        //this.entityManager = entityObjct.AddComponent<EntityManager>();
         this.entityManager = (EntityManager)AddManager<EntityManager>();
 
-
-        //GameObject dataObject = new GameObject("DataManager");
-        //dataObject.transform.SetParent(transform);
-        //this.dataManager = dataObject.AddComponent<DataManager>();
         this.dataManager = (DataManager)AddManager<DataManager>();
 
         this.timeManager = (TimeManager)AddManager<TimeManager>();
 
-
+        this.cameraManager = (CameraManager)AddManager<CameraManager>();
     }
 
     UnityEngine.Component AddManager<T>()
@@ -65,4 +53,9 @@ public class Main : SingletonMonobehaviour<Main>
 
 
     }
+
+	private void LateUpdate()
+	{
+        this.cameraManager.CameraUpdate();
+	}
 }
