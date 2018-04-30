@@ -14,7 +14,7 @@ public class InputManager : SingletonMonobehaviour<InputManager>
 
     public Building SelectBuilding = null;
     public Building DragBuilding = null;
-
+    public enum MouseButton { Left = 0, Right, Wheel };
     public class FingerInput
     {
         public int fingerID = -1;

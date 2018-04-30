@@ -7,16 +7,9 @@ using UnityEngine;
 public class AniControllerNormalUnit : tk2dAniController
 {
 
-    public Dictionary<AnimationType, Tk2dAniData> AnimationList; //애니메이션 컨트롤러를 쓰는 객체별로 자신에게 필요한 애니메이션을 담아둔다.
-
     public Dictionary<AnimationType, string[]> animationNameList; //애니메이션 클립 리스트.
 
     public AnimationType currAnimation; //현재 애니메이션
-
-    //protected override void Awake()
-    //{
-    //    base.Awake();
-    //}
 
     /// <summary>
     /// AnimationList,animationNameList를 각 객체에 맞게 세팅한다.
@@ -24,8 +17,6 @@ public class AniControllerNormalUnit : tk2dAniController
     public override void Init(EntityCategory category)
     {
         base.Init(category);
-
-        AnimationList = new Dictionary<AnimationType, Tk2dAniData>();
 
         animationNameList = new Dictionary<AnimationType, string[]>();
 
@@ -43,9 +34,7 @@ public class AniControllerNormalUnit : tk2dAniController
         animationNameList.Add(AnimationType.Attack, attacklist);
 
         //현재방향,애니메이션 지정
-        currDirection = (int)DirectionType.SE;
-
-
+        currDirection = (int)Direction8Way.se;
     }
 
 

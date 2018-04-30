@@ -104,7 +104,7 @@ public class AILerp : MonoBehaviour
 	 * Used to test if coroutines should be started in OnEnable to prevent calculating paths
 	 * in the awake stage (or rather before start on frame 0).
 	 */
- //   private bool startHasRun = false;
+    //   private bool startHasRun = false;
 
     public bool isUseMultiTargetPath { get; set; }
 
@@ -184,16 +184,11 @@ public class AILerp : MonoBehaviour
         //    StartCoroutine(RepeatTrySearchPath());
     }
 
-    public void SetTag(PathTag tag)
+    public void SetTag()
     {
-        if (tag == PathTag.Ground)
-        {
-            seeker.traversableTags = 1 << 0;
-        }
-        else
-        {
-            seeker.traversableTags = 1 << 0 | 1 << 1;
-        }
+
+        seeker.traversableTags = 1 << 0;
+
     }
 
     public void OnDisable()
@@ -279,8 +274,8 @@ public class AILerp : MonoBehaviour
 
     }
 
-   // float time = 0;
-   // bool bSearchStart = false;
+    // float time = 0;
+    // bool bSearchStart = false;
 
     /** Requests a path to the target.
 	 * Bypasses 'is-it-a-good-time-to-request-a-path' checks.
@@ -403,7 +398,7 @@ public class AILerp : MonoBehaviour
 	 */
     public virtual void OnPathComplete(Path _p)
     {
-      //  bSearchStart = false;
+        //  bSearchStart = false;
 
         ABPath p = _p as ABPath;
 
@@ -554,7 +549,7 @@ public class AILerp : MonoBehaviour
 
     protected virtual void Update()
     {
-        
+
         if (canMove)
         {
             Vector3 nextPos = CalculateNextPosition();

@@ -2,6 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//애니메이션 데이터 animationListRootData를 가지고 가공해서 만든다. 
+//tk2d애니메이션의 정보를 가지고 있다.
+public class Tk2dAniData
+{
+    //애니아이디
+    public int ani_ID { get; set; }
+
+    //애니메이션 종류 - recharger,unit,building_normal,building_resource,building_defence
+    public string type { get; set; }
+
+    //동작 키값 - idle,walk,attack,heal,rs,working
+    public string key { get; set; }
+
+    //방향성체크 - 1이면 방향이 있음, 0이면 방향이 없음.
+    public int directional { get; set; }
+
+    //tk2dSpriteAnimation 오브젝트.
+    public tk2dSpriteAnimation animation { get; set; }
+}
+
 public static class Define
 {
     //게임상 오브젝트들의 레이어 정의
@@ -224,4 +244,23 @@ public enum Direction16Way : int
     nw = 14,
     nnw = 15,
 
+}
+
+public enum SoundPlayType
+{
+    None = -1,
+    BGM,
+    EFFECT,
+    UI,
+}
+
+public enum MusicPlayType
+{
+    IDLE = -1,
+    PLAY,
+    PLAY_ONESHOT,
+    STOP,
+    FADE_IN,
+    FADE_OUT,
+    FADE_TO,
 }

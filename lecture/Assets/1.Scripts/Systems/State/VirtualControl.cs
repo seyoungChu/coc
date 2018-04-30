@@ -124,12 +124,5 @@ public class VirtualControl : MonoBehaviour
 
     }
 
-    /// <summary>
-    /// 선호타겟을 가지고 유닛이나 빌딩을 반환하는 함수.
-    /// </summary>
-    public virtual Entity SetTargetWithFavorite(BuildingGroupType kinds)
-    {
-        return null;
-    }
 }
 
