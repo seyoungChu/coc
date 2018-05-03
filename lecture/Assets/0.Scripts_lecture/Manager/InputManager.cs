@@ -147,7 +147,7 @@ public class InputManager : SingletonMonobehaviour<InputManager>
 
     public void TouchUpdate()
     {
-        
+
         FingerInput fingerinput;
 
 
@@ -250,11 +250,11 @@ public class InputManager : SingletonMonobehaviour<InputManager>
     public void UpdateGameInput()
     {
         //phase 2 shortcut Key
-        if(Input.GetKeyDown(KeyCode.F1))
+        if (Input.GetKeyDown(KeyCode.F1))
         {
             EntityManager.Instance.SpawnEntity((int)EntityList.WatchTower);
         }
-        if(Input.GetKeyDown(KeyCode.F2))
+        if (Input.GetKeyDown(KeyCode.F2))
         {
             EntityManager.Instance.SpawnEntity((int)EntityList.Creed);
         }
@@ -289,6 +289,9 @@ public class InputManager : SingletonMonobehaviour<InputManager>
     {
         if (input.currentRayHitLayer == Define.LAYERMASK_BUILDING)
         {
+
+            CameraManager.Instance.isEnablePan = false;
+
             this.SelectBuilding = input.currentRayHitTransform.GetComponent<Building>();
 
             if (this.DragBuilding == null)
@@ -312,13 +315,18 @@ public class InputManager : SingletonMonobehaviour<InputManager>
 
     void TouchEndState(FingerInput input)
     {
-        if(this.DragBuilding != null)
+        if (this.DragBuilding != null)
         {
             this.DragBuilding.isSelect = false;
         }
-        if(this.SelectBuilding != null)
+        if (this.SelectBuilding != null)
         {
             this.SelectBuilding = null;
+        }
+
+        if (CameraManager.Instance.isEnablePan == false)
+        {
+            CameraManager.Instance.isEnablePan = true;
         }
     }
 

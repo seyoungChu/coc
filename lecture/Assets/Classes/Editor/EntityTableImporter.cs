@@ -50,8 +50,9 @@ public class EntityTableImporter : AssetPostprocessor {
 					cell = row.GetCell(3); p.HP = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(4); p.Level = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(5); p.Prefab = (cell == null ? "" : cell.StringCellValue);
-					cell = row.GetCell(6); p.SearchRange = (float)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(6); p.SearchRange = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(7); p.AttackPower = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(8); p.AttackSpeed = (float)(cell == null ? 0 : cell.NumericCellValue);
 						s.list.Add (p);
 					}
 					data.sheets.Add(s);

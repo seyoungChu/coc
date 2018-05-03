@@ -122,9 +122,9 @@ public class EntityData
     public int AttackPower;
     public float SearchRange;
     public string Prefab;
+    public float AttackSpeed;
 
-
-    public EntityData(int _id, string category, string eType, int hp, int level, int power,float range, string prefab)
+    public EntityData(int _id, string category, string eType, int hp, int level, int power,float range, float speed,string prefab)
     {
         this.ID = _id;
         this.entCategory = (EntityCategory)System.Enum.Parse(typeof(EntityCategory), category);
@@ -134,6 +134,7 @@ public class EntityData
         this.AttackPower = power;
         this.SearchRange = range;
         this.Prefab = prefab;
+        this.AttackSpeed = speed;
     }
 
 }

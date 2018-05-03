@@ -49,7 +49,7 @@ public class Entity : MonoBehaviour {
     public float moveType; //0 = 지상 이동, 1 = 공중 레이어1, 2 = 공중 레이어2(1보다 상위 레이어)
 
     [HideInInspector]
-    public float attackSpeed = 0.5f;
+    public float attackSpeed = 1.5f;
 
     [HideInInspector]
     public int attackPower = 100;

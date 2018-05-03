@@ -29,7 +29,7 @@ public class Unit : Entity
         this.hp = data.HP;
         this.searchRange = data.SearchRange;
         this.attackPower = data.AttackPower;
-
+        this.attackSpeed = data.AttackSpeed;
         CreateUnitControl();
 	}
 

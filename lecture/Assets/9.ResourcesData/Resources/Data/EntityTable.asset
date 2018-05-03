@@ -22,6 +22,7 @@ MonoBehaviour:
       Prefab: building/watch_tower/watch_tower
       SearchRange: 10
       AttackPower: 10
+      AttackSpeed: 1
     - ID: 100001
       EntityCategory: Creed
       EntityType: Unit
@@ -30,3 +31,4 @@ MonoBehaviour:
       Prefab: character/creed/creed
       SearchRange: 2
       AttackPower: 50
+      AttackSpeed: 1.5

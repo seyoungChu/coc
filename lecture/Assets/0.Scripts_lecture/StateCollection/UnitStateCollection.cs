@@ -192,6 +192,7 @@ public class UnitState_Attack : FSMState
 
     public void AttackCallBack()
     {
+        Debug.Log("Time Check :" + Time.time.ToString());
         if (OwnerController.OwnerEntity.IsDead() == false)
         {
             OwnerController.aniController.PlayAnimation(AnimationType.Attack, false);
@@ -232,7 +233,7 @@ public class UnitState_Attack : FSMState
 
     public override void DoCheck()
     {
-        if(this.OwnerController.myTarget == null || this.TargetEntity == null ||
+        if (this.OwnerController.myTarget == null || this.TargetEntity == null ||
            this.TargetEntity != null && this.TargetEntity.IsDead() == true)
         {
             OwnerController.SetTransition(Transition.AttackToSearch);
@@ -241,12 +242,12 @@ public class UnitState_Attack : FSMState
 
     public override void DoAct()
     {
-        
+
     }
 
     public override void DoBeforeLeaving()
     {
-        if(attackCoolTime != null)
+        if (attackCoolTime != null)
         {
             TimeManager.Instance.RemoveTimer(attackCoolTime);
         }
