@@ -265,3 +265,11 @@ public enum MusicPlayType
     FADE_OUT,
     FADE_TO,
 }
+
+public enum EffectType
+{
+    NORMAL,
+    MISSILE,
+    PARABOLA,
+
+}

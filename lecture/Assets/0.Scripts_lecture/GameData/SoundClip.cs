@@ -26,7 +26,7 @@ public class SoundClip
 
     public float pitch = 1.0f;
     public float dopplerLevel = 1.0f;
-    public AudioRolloffMode rolloffMode = AudioRolloffMode.Logarithmic;
+    public AudioRolloffMode rollOffMode = AudioRolloffMode.Logarithmic;
     public float minDistance = 10000.0f;
     public float maxDistance = 50000.0f;
     public float spatialBlend = 1.0f;
