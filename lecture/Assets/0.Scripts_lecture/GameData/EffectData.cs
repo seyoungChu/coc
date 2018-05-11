@@ -12,7 +12,7 @@ public class EffectData : BaseData
 	public string clipPath = "Effects/"; //경로.
 	private string xmlFilePath = ""; //데이터 파일 저장 경로.
 	private string xmlFileName = "effectData.xml"; //데이터 파일 이름.
-	private string dataPath = "Datas/effectData";
+	private string dataPath = "Data/effectData";
 	private static string EFFECT = "effect"; //저장 키.
 	private static string CLIP = "clip"; //저장 키.
 

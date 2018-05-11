@@ -125,7 +125,7 @@ public class SoundTool : EditorWindow
 								this.soundSource = (AudioClip)EditorGUILayout.ObjectField("Audio Clip", this.soundSource, typeof(AudioClip), false, GUILayout.Width(this.uiWidth1 * 1.5f));
 								if (this.soundSource != null)
 								{
-									SoundTool.soundData.soundClips[selection].clipPath = GetPath(this.soundSource);
+									SoundTool.soundData.soundClips[selection].clipPath = EditorHelper.GetPath(this.soundSource);
 									SoundTool.soundData.soundClips[selection].clipName = this.soundSource.name;
 									SoundTool.soundData.soundClips[selection].pitch = EditorGUILayout.Slider("Pitch", SoundTool.soundData.soundClips[selection].pitch, -3.0f, 3.0f, GUILayout.Width(this.uiWidth1 * 1.5f));
 									SoundTool.soundData.soundClips[selection].dopplerLevel = EditorGUILayout.Slider("Doppler Level", SoundTool.soundData.soundClips[selection].dopplerLevel, 0.0f, 5.0f, GUILayout.Width(this.uiWidth1 * 1.5f));
@@ -201,20 +201,6 @@ public class SoundTool : EditorWindow
 
 
 	}
-	/// <summary>
-	/// 경로 계산 함수.
-	/// </summary>
-	/// <param name="p_clip"></param>
-	/// <returns></returns>
-	string GetPath(AudioClip p_clip)
-	{
-		string __ret = string.Empty;
-		__ret = AssetDatabase.GetAssetPath(p_clip);
-		string[] path_node = __ret.Split('/'); //Assets/Resources/Audio/UI/sound.wav
-		__ret = path_node[2] + "/" + path_node[3] + "/"; // Audio + "/" + UI +"/"
-														 //Debug.Log(__ret);
-		return __ret;
-	}
 
 
 	/// <summary>
@@ -222,9 +208,9 @@ public class SoundTool : EditorWindow
 	/// </summary>
 	public void CreateEnumStructure()
 	{
-		string templateFilePath = "Assets/Editor/EnumTemplate.txt";
+
 		string enumName = "SoundList";
-		string entittyTemplate = File.ReadAllText(templateFilePath);
+
 		StringBuilder builder = new StringBuilder();
 		builder.AppendLine();
 		for (int i = 0; i < SoundTool.soundData.names.Length; i++)
@@ -234,19 +220,8 @@ public class SoundTool : EditorWindow
 				builder.AppendLine("    " + SoundTool.soundData.names[i] + " = " + i.ToString() + ",");
 			}
 		}
-		entittyTemplate = entittyTemplate.Replace("$DATA$", builder.ToString());
-		entittyTemplate = entittyTemplate.Replace("$ENUM$", enumName);
-		string folderPath = "Assets/0.Scripts_lecture/GameData/";
-		if (Directory.Exists(folderPath) == false)
-		{
-			Directory.CreateDirectory(folderPath);
-		}
 
-		string FilePath = folderPath + enumName + ".cs";
-		if (File.Exists(FilePath))
-		{
-			File.Delete(FilePath);
-		}
-		File.WriteAllText(FilePath, entittyTemplate);
+		EditorHelper.CreateEnumStructure(enumName, builder);
 	}
+
 }

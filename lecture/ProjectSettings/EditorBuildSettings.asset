@@ -5,15 +5,18 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/2.Scenes/working.unity
-    guid: c4c11a18852014eed94c0b27c27277c2
-  - enabled: 1
+  - enabled: 0
     path: Assets/CubeShipsFree/Scenes/Begin.unity
-    guid: 00000000000000000000000000000000
-  - enabled: 1
+    guid: 4e74fec120a32417581ea3b8a5196f90
+  - enabled: 0
     path: Assets/CubeShipsFree/Scenes/Finish.unity
-    guid: 00000000000000000000000000000000
-  - enabled: 1
+    guid: 4198dc1a54ab24ffa964883f14302f60
+  - enabled: 0
     path: Assets/CubeShipsFree/Scenes/Main.unity
+    guid: 7e3d202b9d8fd4d19b83fdcce96d20f7
+  - enabled: 1
+    path: Assets/2.Scenes/Starter.unity
+    guid: 692219fe25fab41ce946da8de2b86a34
+  - enabled: 1
+    path: Assets/2.Scenes/InGame.unity
     guid: 00000000000000000000000000000000

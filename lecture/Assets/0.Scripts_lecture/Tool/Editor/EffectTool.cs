@@ -139,7 +139,7 @@ public class EffectTool : EditorWindow
                                 this.effectSource = (GameObject)EditorGUILayout.ObjectField("이펙트", this.effectSource, typeof(GameObject), false, GUILayout.Width(this.uiWidth300 * 1.5f));
                                 if (this.effectSource != null)
                                 {
-									EffectTool.effectData.effectClips[selection].effectPath = GetPath(this.effectSource);
+									EffectTool.effectData.effectClips[selection].effectPath = EditorHelper.GetPath(this.effectSource);
 									EffectTool.effectData.effectClips[selection].effectName = this.effectSource.name;
                                     //EffectTool.effectData.effectClips[selection].effect_sound = (SoundList)EditorGUILayout.EnumPopup("사운드.", EffectTool.effectData.effectClips[selection].effect_sound, GUILayout.Width(this.uiWidth300 * 1.5f));
                                     
@@ -153,7 +153,7 @@ public class EffectTool : EditorWindow
                                         this.beShotSource = (GameObject)EditorGUILayout.ObjectField("피격이펙트.", this.beShotSource, typeof(GameObject), false, GUILayout.Width(this.uiWidth300 * 1.5f));
                                         if (beShotSource != null)
                                         {
-											EffectTool.effectData.effectClips[selection].beHitEffect_Path = GetPath(this.beShotSource) + this.beShotSource.name;
+											EffectTool.effectData.effectClips[selection].beHitEffect_Path = EditorHelper.GetPath(this.beShotSource) + this.beShotSource.name;
 											if (this.beShotSource != EffectTool.effectData.effectClips[selection].beHitEffect_Prefab)
                                             {
                                                 EffectTool.effectData.effectClips[selection].PreLoad();
@@ -225,9 +225,9 @@ public class EffectTool : EditorWindow
     /// </summary>
     public void CreateEnumStructure()
     {
-        string templateFilePath = "Assets/Scripts/Test/EnumTemplate.txt";
+        
         string enumName = "EffectList";
-        string entittyTemplate = File.ReadAllText(templateFilePath);
+        
         StringBuilder builder = new StringBuilder();
         builder.AppendLine();
 		for (int i = 0; i < EffectTool.effectData.names.Length; i++)
@@ -237,27 +237,11 @@ public class EffectTool : EditorWindow
 				builder.AppendLine("    " + EffectTool.effectData.names[i] + " = " + i.ToString() + ",");
             }
         }
-        entittyTemplate = entittyTemplate.Replace("$DATA$", builder.ToString());
-        entittyTemplate = entittyTemplate.Replace("$ENUM$", enumName);
 
-        Directory.CreateDirectory("Assets/Scripts/Common/Data/Effect/");
-        string FilePath = "Assets/Scripts/Common/Data/Effect/" + enumName + ".cs";
-        if (File.Exists(FilePath))
-        {
-            File.Delete(FilePath);
-        }
-        File.WriteAllText(FilePath, entittyTemplate);
+		EditorHelper.CreateEnumStructure(enumName, builder);
     }
 
-	/// <summary>
-    /// 경로 계산 함수.
-    /// </summary>
-    string GetPath(GameObject p_clip)
-    {
-        string __ret = string.Empty;
-        __ret = AssetDatabase.GetAssetPath(p_clip);
-        string[] path_node = __ret.Split('/');
-        __ret = path_node[2] + "/" + path_node[3] + "/";
-        return __ret;
-    }
+
+
+
 }

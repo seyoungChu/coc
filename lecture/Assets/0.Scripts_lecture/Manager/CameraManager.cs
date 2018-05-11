@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraManager : SingletonMonobehaviour<CameraManager>
 {
     public static tk2dCamera tk2DCamera;
+	private bool isInit = false;
 
     public bool isEnableZoom = true;
 
@@ -52,12 +53,21 @@ public class CameraManager : SingletonMonobehaviour<CameraManager>
         return this.rootForBounds;
     }
 
+    private void InitCamera()
+	{
+		if(Camera.main != null && CameraManager.tk2DCamera == null)
+		{
+			this.isInit = true;
+			this.CalculateBounds();
+            CameraManager.tk2DCamera = Camera.main.GetComponent<tk2dCamera>();
+
+            springPosition = Camera.main.GetComponent<SpringPosition>();
+		}
+	}
+
     private void Start()
     {
-        this.CalculateBounds();
-        CameraManager.tk2DCamera = Camera.main.GetComponent<tk2dCamera>();
-
-        springPosition = Camera.main.GetComponent<SpringPosition>();
+        
     }
 
     Vector3 CalculateConstrainOffset()
@@ -170,6 +180,12 @@ public class CameraManager : SingletonMonobehaviour<CameraManager>
 
     public void CameraUpdate()
     {
+
+		if(this.isInit == false)
+		{
+			this.InitCamera();
+		}
+
         InputManager.FingerInput currentInput = InputManager.Instance.GetCurrentInput();
 
         if (this.isEnableTween == true)

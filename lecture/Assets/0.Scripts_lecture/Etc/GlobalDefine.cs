@@ -2,6 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+#region //Tool Defines 
+public enum EventStartType { INTERACT, AUTOSTART, TRIGGER_ENTER, TRIGGER_EXIT, NONE, KEY_PRESS, DROP };
+public enum AIConditionNeeded { ALL, ONE };
+public enum ValueCheck { EQUALS, LESS, GREATER };
+public enum SimpleOperator { ADD, SUB, SET };
+public enum MouseButton { Left = 0, Right, Wheel };
+#endregion
+
 //애니메이션 데이터 animationListRootData를 가지고 가공해서 만든다. 
 //tk2d애니메이션의 정보를 가지고 있다.
 public class Tk2dAniData

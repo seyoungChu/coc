@@ -5,8 +5,9 @@ using UnityEngine;
 public class DataManager : SingletonMonobehaviour<DataManager>
 {
 
-    public EntityTable entityTable;
+    public EntityTable entityTable = null;
     public Dictionary<int, EntityData> entityData = new Dictionary<int, EntityData>();
+	public SoundData soundData = null;
     private void Start()
     {
 
@@ -21,6 +22,12 @@ public class DataManager : SingletonMonobehaviour<DataManager>
                 i++;
             }
         }
+
+		if (soundData == null) 
+		{
+			soundData = ScriptableObject.CreateInstance<SoundData>();
+			soundData.LoadData();
+		}
 
     }
 
@@ -46,6 +53,16 @@ public class DataManager : SingletonMonobehaviour<DataManager>
             }
         }
         return null;
+    }
+
+	public static SoundData SoundData()
+    {
+        if (DataManager.Instance.soundData == null)
+        {
+            DataManager.Instance.soundData = ScriptableObject.CreateInstance<SoundData>();
+            DataManager.Instance.soundData.LoadData();
+        }
+        return DataManager.Instance.soundData;
     }
 
 }

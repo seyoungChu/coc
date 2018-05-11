@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BaseData : ScriptableObject
 {
-    public const string dataDirectory = "/Resources/Datas/";
+	public const string dataDirectory = "/9.ResourcesData/Resources/Data/";
 
     public string[] names = null;
 

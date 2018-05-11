@@ -14,7 +14,7 @@ public class SoundData : BaseData
     public string clipPath = "Sound/"; //경로.
     private string xmlFilePath = ""; //데이터 파일 저장 경로.
     private string xmlFileName = "soundData.xml"; //데이터 파일 이름.
-    private string dataPath = "Datas/soundData";
+    private string dataPath = "Data/soundData";
     private static string SOUND = "sound"; //저장 키.
     private static string CLIP = "clip"; //저장 키.
     /// <summary>
@@ -127,6 +127,8 @@ public class SoundData : BaseData
     /// </summary>
     public void SaveData()
     {
+		Debug.LogWarning("xmlFilePath :" + xmlFilePath);
+		Debug.LogWarning("xmlFileName :" + xmlFileName);
         using (XmlTextWriter xml = new XmlTextWriter(xmlFilePath + xmlFileName, System.Text.Encoding.Unicode))
         {
             xml.WriteStartDocument();

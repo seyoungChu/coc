@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Main : SingletonMonobehaviour<Main>
 {
@@ -10,6 +11,8 @@ public class Main : SingletonMonobehaviour<Main>
     DataManager dataManager;
     TimeManager timeManager;
     CameraManager cameraManager;
+	SoundManager soundManager;
+    
 
 	// Use this for initialization
 	void Start()
@@ -31,6 +34,10 @@ public class Main : SingletonMonobehaviour<Main>
         this.timeManager = (TimeManager)AddManager<TimeManager>();
 
         this.cameraManager = (CameraManager)AddManager<CameraManager>();
+
+		this.soundManager = (SoundManager)AddManager<SoundManager>();
+
+		SceneManager.LoadScene("InGame");
     }
 
     UnityEngine.Component AddManager<T>()

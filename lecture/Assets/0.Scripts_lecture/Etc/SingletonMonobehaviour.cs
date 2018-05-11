@@ -10,10 +10,11 @@ public class SingletonMonobehaviour<T> : MonoBehaviour where T : MonoBehaviour
     {
         get
         {
+			
             if (_instance == null)
             {
                 _instance = (T)FindObjectOfType(typeof(T));
-
+				//Debug.LogWarning(typeof(T).Name);
                 if (_instance == null)
                 {
                     var _gameObject = new GameObject(typeof(T).ToString());
