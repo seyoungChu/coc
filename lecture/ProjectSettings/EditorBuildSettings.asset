@@ -14,9 +14,15 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/CubeShipsFree/Scenes/Main.unity
     guid: 7e3d202b9d8fd4d19b83fdcce96d20f7
-  - enabled: 1
+  - enabled: 0
     path: Assets/2.Scenes/Starter.unity
     guid: 692219fe25fab41ce946da8de2b86a34
-  - enabled: 1
+  - enabled: 0
     path: Assets/2.Scenes/InGame.unity
-    guid: 00000000000000000000000000000000
+    guid: ec18acb2347794089be31a472dcf8e51
+  - enabled: 0
+    path: Assets/SimpleNetwork/1.Scenes/Server.unity
+    guid: 8fa64db64842d4696a8ed59cd66a4fd7
+  - enabled: 0
+    path: Assets/SimpleNetwork/1.Scenes/Client.unity
+    guid: fb3f1299a92c24680be2c8d129e83535
