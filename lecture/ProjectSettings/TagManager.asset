@@ -8,6 +8,9 @@ TagManager:
   - building
   - Grass
   - MapBounds
+  - enemy
+  - towermanager
+  - missile
   layers:
   - Default
   - TransparentFX

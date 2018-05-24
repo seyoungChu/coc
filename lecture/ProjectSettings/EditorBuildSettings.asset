@@ -5,13 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/CubeShipsFree/Scenes/Begin.unity
     guid: 4e74fec120a32417581ea3b8a5196f90
-  - enabled: 0
+  - enabled: 1
     path: Assets/CubeShipsFree/Scenes/Finish.unity
     guid: 4198dc1a54ab24ffa964883f14302f60
-  - enabled: 0
+  - enabled: 1
     path: Assets/CubeShipsFree/Scenes/Main.unity
     guid: 7e3d202b9d8fd4d19b83fdcce96d20f7
   - enabled: 0
