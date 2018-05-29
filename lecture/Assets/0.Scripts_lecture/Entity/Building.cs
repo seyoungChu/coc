@@ -170,5 +170,15 @@ public class Building : Entity
         return retPosition;
     }
 
+    public override void OnDamaged(int damage)
+    {
+        SoundManager.Instance.PlayOneShot(SoundList.BeShot.ToString());
+    }
+
+    public override void DestoryEntity()
+    {
+        SoundManager.Instance.PlayOneShot(SoundList.Explosion.ToString());
+
+    }
 
 }
